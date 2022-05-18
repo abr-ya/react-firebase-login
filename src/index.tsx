@@ -1,7 +1,15 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 import "regenerator-runtime/runtime";
-import ReactDOM from "react-dom";
-import "./fonts.css";
-import "./body.css";
 import App from "./App";
+import "./index.css";
+import "./fonts.css";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement,
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);

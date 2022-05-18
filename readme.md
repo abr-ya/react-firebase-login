@@ -3,12 +3,17 @@
 
 ## О сборке
 "Чистая" и "минимальная" сборка Webpack + TypeScript + React, основные инструменты:
-- Webpack,
-- TypeScript,
-- React,
-- Axios,
-- Jest,
-- React Testing Library.
+- [TypeScript](https://www.typescriptlang.org/docs/),
+- [Webpack](https://webpack.js.org/guides/getting-started/),
+- [Babel](https://babeljs.io/setup),
+- [React](https://ru.react.js.org/docs/getting-started.html),
+- [Axios](https://axios-http.com/docs/intro),
+- [Jest](https://jestjs.io/docs/getting-started),
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+
+добавлены:
+- [Tailwind CSS](https://tailwindcss.com/docs/installation),
+- [React Router](https://reactrouterdotcom.fly.dev/docs/en/v6/getting-started/overview).
 
 Для соблюдения чистоты кода используются ESLint и Prettier.
 
