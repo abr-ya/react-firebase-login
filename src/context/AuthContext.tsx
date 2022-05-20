@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../services/fire";
+import { clearConfigCache } from "prettier";
 
 interface IAuthContextProvider {
   children: ReactElement;
@@ -14,16 +15,29 @@ interface IAuthContextProvider {
 
 interface IСreateUser {
   email: string;
-  password: string;
+  pass: string;
 }
 
 const UserContext = createContext({});
 
 export const AuthContextProvider = ({ children }: IAuthContextProvider) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<Object>({});
 
-  const createUser = ({ email, password }: IСreateUser) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        console.log(currentUser);
+        setUser(currentUser);
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const createUser = ({ email, pass }: IСreateUser) => {
+    console.log("createUser", email, pass);
+    return createUserWithEmailAndPassword(auth, email, pass);
   };
 
   return (

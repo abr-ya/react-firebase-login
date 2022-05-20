@@ -1,13 +1,25 @@
 import { useState, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
+import { UserAuth } from '../context/AuthContext';
 
 const Signup = (): JSX.Element => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [error, setError] = useState('');
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const { createUser } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("создать пользователя", email, pass);
+    setError('');
+    try {
+      await createUser({email, pass});
+      navigate('/user');
+    } catch (error: any) {
+      setError(error.message);
+      console.log(error.message);
+    }
   };
 
   return (
