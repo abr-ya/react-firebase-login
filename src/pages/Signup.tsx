@@ -1,23 +1,16 @@
-import { useState, FormEvent } from "react";
+import MailPassForm from "components/MailPassForm";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 const Signup = (): JSX.Element => {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const [error, setError] = useState("");
-
   const { createUser } = UserAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setError("");
+  const formHandler = async (email: string, pass: string) => {
     try {
       await createUser({ email, pass });
       navigate("/user");
     } catch (error: any) {
-      setError(error.message);
       console.log(error.message);
     }
   };
@@ -33,27 +26,7 @@ const Signup = (): JSX.Element => {
           </Link>
         </p>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col py-2">
-          <label className="py-2 font-medium">Email Address</label>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            className="border p-3"
-            type="email"
-          />
-        </div>
-        <div className="flex flex-col py-2">
-          <label className="py-2 font-medium">Password</label>
-          <input
-            onChange={(e) => setPass(e.target.value)}
-            className="border p-3"
-            type="password"
-          />
-        </div>
-        <button className="border border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 my-2 text-white">
-          Sign In
-        </button>
-      </form>
+      <MailPassForm formHandler={formHandler} buttonTitle="Sign Up" />
     </div>
   );
 };
