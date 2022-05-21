@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "regenerator-runtime/runtime";
-import { AuthContextProvider } from './context/AuthContext';
+import { AuthContextProvider } from "./context/AuthContext";
 import App from "./App";
 import "./index.css";
 import "./fonts.css";
@@ -14,5 +14,5 @@ root.render(
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </AuthContextProvider>
+  </AuthContextProvider>,
 );

@@ -1,20 +1,31 @@
 import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 interface IProtectedRoute {
   children: ReactElement;
 }
 
 const ProtectedRoute = ({ children }: IProtectedRoute) => {
-  const { user } = { user: "tempUser" };
+  const { user } = UserAuth();
+  const userID = user.uid;
+  console.log("ProtectedRoute, user id: ", userID);
   const navigate = useNavigate();
-  if (!user) {
+  if (!userID) {
     setTimeout(() => {
+      console.log("Redirect to Main Page");
       navigate("/");
-    }, 10000);
+    }, 5000);
   }
 
-  return user ? children : <div>необходимо авторизоваться</div>;
+  return userID ? (
+    children
+  ) : (
+    <div>
+      Страница доступна только после авторизации. Вы будете переадресованы на
+      главную страницу.
+    </div>
+  );
 };
 
 export default ProtectedRoute;
