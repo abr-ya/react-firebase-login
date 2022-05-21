@@ -1,6 +1,20 @@
-import { Link } from "react-router-dom";
+import MailPassForm from "components/MailPassForm";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 const Signin = (): JSX.Element => {
+  const { login } = UserAuth();
+  const navigate = useNavigate();
+
+  const formHandler = async (email: string, pass: string) => {
+    try {
+      await login({ email, pass });
+      navigate("/user");
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="max-w-[700px] mx-auto my-16 p-4">
       <div>
@@ -12,6 +26,7 @@ const Signin = (): JSX.Element => {
           </Link>
         </p>
       </div>
+      <MailPassForm formHandler={formHandler} buttonTitle="Sign Up" />
     </div>
   );
 };

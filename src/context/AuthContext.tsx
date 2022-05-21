@@ -40,12 +40,16 @@ export const AuthContextProvider = ({ children }: IAuthContextProvider) => {
     return createUserWithEmailAndPassword(auth, email, pass);
   };
 
+  const login = ({ email, pass }: IСreateUser) => {
+    return signInWithEmailAndPassword(auth, email, pass);
+  };
+
   const logout = () => {
     return signOut(auth);
   };
 
   return (
-    <UserContext.Provider value={{ createUser, user, logout }}>
+    <UserContext.Provider value={{ createUser, user, login, logout }}>
       {children}
     </UserContext.Provider>
   );
