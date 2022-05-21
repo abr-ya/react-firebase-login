@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import Container from "./elements/Container";
 
 const About: FC = () => (
-  <div className="max-w-[700px] mx-auto my-16 p-4">
-    <h1 className="text-2xl font-bold py-2">About page</h1>
-  </div>
+  <Container header="About page">
+    <p>Здесь будет описание.</p>
+  </Container>
 );
 
 export default About;

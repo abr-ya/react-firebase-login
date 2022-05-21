@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children }: IProtectedRoute) => {
     setTimeout(() => {
       console.log("Redirect to Main Page");
       navigate("/");
-    }, 5000);
+    }, 3500);
   }
 
   return userID ? (
