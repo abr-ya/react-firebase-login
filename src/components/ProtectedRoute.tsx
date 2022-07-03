@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
@@ -11,12 +11,16 @@ const ProtectedRoute = ({ children }: IProtectedRoute) => {
   const userID = user.uid;
   console.log("ProtectedRoute, user id: ", userID);
   const navigate = useNavigate();
-  if (!userID) {
+
+  useEffect(() => {
     setTimeout(() => {
-      console.log("Redirect to Main Page");
-      navigate("/");
+      console.log("проверка", userID);
+      if (!userID) {
+        console.log("Redirect to Main Page");
+        navigate("/");
+      }
     }, 3500);
-  }
+  }, []);
 
   return userID ? (
     children

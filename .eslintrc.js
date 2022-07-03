@@ -22,5 +22,6 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-var-requires": 0,
     "react/react-in-jsx-scope": 0,
+    // "max-len": ["warning", { code: 120 }],
   },
 };

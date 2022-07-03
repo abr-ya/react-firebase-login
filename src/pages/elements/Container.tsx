@@ -6,7 +6,7 @@ interface IContainer {
 }
 
 const Container = ({ header, children }: IContainer) => (
-  <div className="max-w-[700px] mx-auto my-16 p-4">
+  <div className="max-w-[700px] mx-auto my-2 p-2">
     {header && <h1 className="text-2xl font-bold py-2">{header}</h1>}
     {children}
   </div>

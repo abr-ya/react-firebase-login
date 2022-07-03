@@ -27,7 +27,7 @@ const Signin = (): JSX.Element => {
             </Link>
           </p>
         </div>
-        <MailPassForm formHandler={formHandler} buttonTitle="Sign Up" />
+        <MailPassForm formHandler={formHandler} buttonTitle="Sign In" />
       </>
     </Container>
   );
